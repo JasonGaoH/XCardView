@@ -61,7 +61,7 @@ import com.gaohui.xcardview.R;
  * 在原生CardView上做的小的调整，使得我们可以控制阴影的颜色，其他的用法跟原生CardView相同。
  * 在android 4.2和android 5.0上的绘制出来的阴影不一样，不能修改颜色，这里统一采用CardViewBaseImpl来实现阴影的绘制
  */
-public class XYCardView extends FrameLayout {
+public class XCardView extends FrameLayout {
 
     private static final int[] COLOR_BACKGROUND_ATTR = {android.R.attr.colorBackground};
     private static final CardViewImpl IMPL;
@@ -88,17 +88,17 @@ public class XYCardView extends FrameLayout {
 
     final Rect mShadowBounds = new Rect();
 
-    public XYCardView(Context context) {
+    public XCardView(Context context) {
         super(context);
         initialize(context, null, 0);
     }
 
-    public XYCardView(Context context, AttributeSet attrs) {
+    public XCardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initialize(context, attrs, 0);
     }
 
-    public XYCardView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public XCardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initialize(context, attrs, defStyleAttr);
     }
@@ -430,28 +430,28 @@ public class XYCardView extends FrameLayout {
 
         @Override
         public boolean getUseCompatPadding() {
-            return XYCardView.this.getUseCompatPadding();
+            return XCardView.this.getUseCompatPadding();
         }
 
         @Override
         public boolean getPreventCornerOverlap() {
-            return XYCardView.this.getPreventCornerOverlap();
+            return XCardView.this.getPreventCornerOverlap();
         }
 
         @Override
         public void setShadowPadding(int left, int top, int right, int bottom) {
             mShadowBounds.set(left, top, right, bottom);
-            XYCardView.super.setPadding(left + mContentPadding.left, top + mContentPadding.top,
+            XCardView.super.setPadding(left + mContentPadding.left, top + mContentPadding.top,
                     right + mContentPadding.right, bottom + mContentPadding.bottom);
         }
 
         @Override
         public void setMinWidthHeightInternal(int width, int height) {
             if (width > mUserSetMinWidth) {
-                XYCardView.super.setMinimumWidth(width);
+                XCardView.super.setMinimumWidth(width);
             }
             if (height > mUserSetMinHeight) {
-                XYCardView.super.setMinimumHeight(height);
+                XCardView.super.setMinimumHeight(height);
             }
         }
 
@@ -462,7 +462,7 @@ public class XYCardView extends FrameLayout {
 
         @Override
         public View getCardView() {
-            return XYCardView.this;
+            return XCardView.this;
         }
     };
 }
