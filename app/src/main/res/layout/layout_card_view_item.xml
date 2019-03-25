@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.gaohui.xcardview.widgets.XCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="2dp"
+    app:cardPreventCornerOverlap="false"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_beauty"
+        android:src="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="120dp" />
+
+</com.gaohui.xcardview.widgets.XCardView>

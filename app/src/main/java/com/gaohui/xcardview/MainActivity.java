@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Disposable disposable;
 
+    private CardAdapter mCardAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Consumer<GankBeautyResult>() {
                     @Override
                     public void accept(GankBeautyResult gankBeautyResult) throws Exception {
-
+                        mCardAdapter.setDataList(gankBeautyResult.beauties);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-
+                        //error
                     }
                 });
     }
@@ -46,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(staggeredGridLayoutManager);
 
-        recyclerView.setAdapter(new CardAdapter());
+        mCardAdapter = new CardAdapter();
+        recyclerView.setAdapter(mCardAdapter);
     }
 
     @Override
