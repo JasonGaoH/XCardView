@@ -198,11 +198,11 @@ public class XCardView extends FrameLayout {
     }
 
     private void initialize(Context context, AttributeSet attrs, int defStyleAttr) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CardView, defStyleAttr,
-                R.style.CardView);
-        ColorStateList backgroundColor;
-        if (a.hasValue(R.styleable.CardView_cardBackgroundColor)) {
-            backgroundColor = a.getColorStateList(R.styleable.CardView_cardBackgroundColor);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XCardView, defStyleAttr,
+                R.style.XCardView);
+        ColorStateList backgroundColor,shadowColor = null;
+        if (a.hasValue(R.styleable.XCardView_cardBackgroundColor)) {
+            backgroundColor = a.getColorStateList(R.styleable.XCardView_cardBackgroundColor);
         } else {
             // There isn't one set, so we'll compute one based on the theme
             final TypedArray aa = getContext().obtainStyledAttributes(COLOR_BACKGROUND_ATTR);
@@ -216,29 +216,32 @@ public class XCardView extends FrameLayout {
                     ? getResources().getColor(R.color.cardview_light_background)
                     : getResources().getColor(R.color.cardview_dark_background));
         }
-        float radius = a.getDimension(R.styleable.CardView_cardCornerRadius, 0);
-        float elevation = a.getDimension(R.styleable.CardView_cardElevation, 0);
-        float maxElevation = a.getDimension(R.styleable.CardView_cardMaxElevation, 0);
-        mCompatPadding = a.getBoolean(R.styleable.CardView_cardUseCompatPadding, false);
-        mPreventCornerOverlap = a.getBoolean(R.styleable.CardView_cardPreventCornerOverlap, true);
-        int defaultPadding = a.getDimensionPixelSize(R.styleable.CardView_contentPadding, 0);
-        mContentPadding.left = a.getDimensionPixelSize(R.styleable.CardView_contentPaddingLeft,
+        if(a.hasValue(R.styleable.XCardView_cardShadowColor)) {
+            shadowColor = a.getColorStateList(R.styleable.XCardView_cardShadowColor);
+        }
+        float radius = a.getDimension(R.styleable.XCardView_cardCornerRadius, 0);
+        float elevation = a.getDimension(R.styleable.XCardView_cardElevation, 0);
+        float maxElevation = a.getDimension(R.styleable.XCardView_cardMaxElevation, 0);
+        mCompatPadding = a.getBoolean(R.styleable.XCardView_cardUseCompatPadding, false);
+        mPreventCornerOverlap = a.getBoolean(R.styleable.XCardView_cardPreventCornerOverlap, true);
+        int defaultPadding = a.getDimensionPixelSize(R.styleable.XCardView_contentPadding, 0);
+        mContentPadding.left = a.getDimensionPixelSize(R.styleable.XCardView_contentPaddingLeft,
                 defaultPadding);
-        mContentPadding.top = a.getDimensionPixelSize(R.styleable.CardView_contentPaddingTop,
+        mContentPadding.top = a.getDimensionPixelSize(R.styleable.XCardView_contentPaddingTop,
                 defaultPadding);
-        mContentPadding.right = a.getDimensionPixelSize(R.styleable.CardView_contentPaddingRight,
+        mContentPadding.right = a.getDimensionPixelSize(R.styleable.XCardView_contentPaddingRight,
                 defaultPadding);
-        mContentPadding.bottom = a.getDimensionPixelSize(R.styleable.CardView_contentPaddingBottom,
+        mContentPadding.bottom = a.getDimensionPixelSize(R.styleable.XCardView_contentPaddingBottom,
                 defaultPadding);
         if (elevation > maxElevation) {
             maxElevation = elevation;
         }
-        mUserSetMinWidth = a.getDimensionPixelSize(R.styleable.CardView_android_minWidth, 0);
-        mUserSetMinHeight = a.getDimensionPixelSize(R.styleable.CardView_android_minHeight, 0);
+        mUserSetMinWidth = a.getDimensionPixelSize(R.styleable.XCardView_android_minWidth, 0);
+        mUserSetMinHeight = a.getDimensionPixelSize(R.styleable.XCardView_android_minHeight, 0);
         a.recycle();
 
         IMPL.initialize(mCardViewDelegate, context, backgroundColor, radius,
-                elevation, maxElevation);
+                elevation, maxElevation,shadowColor);
     }
 
     @Override

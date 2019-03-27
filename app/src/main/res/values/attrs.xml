@@ -5,8 +5,9 @@
     <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#f5f5f5</color>
     <color name="cardview_shadow_start_color">#f5f5f5</color>
-    <declare-styleable name="CardView">
+    <declare-styleable name="XCardView">
         <attr format="color" name="cardBackgroundColor"/>
+        <attr format="color" name="cardShadowColor"/>
         <attr format="dimension" name="cardCornerRadius"/>
         <attr format="dimension" name="cardElevation"/>
         <attr format="dimension" name="cardMaxElevation"/>
@@ -23,16 +24,17 @@
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
-    <style name="Base.CardView" parent="android:Widget">
+
+    <style name="Base.XCardView" parent="android:Widget">
         <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
         <item name="cardElevation">@dimen/cardview_default_elevation</item>
         <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
         <item name="cardUseCompatPadding">false</item>
         <item name="cardPreventCornerOverlap">true</item>
     </style>
-    <style name="CardView" parent="Base.CardView">
+    <style name="XCardView" parent="Base.XCardView">
     </style>
-    <style name="CardView.Dark">
+    <style name="XCardView.Dark">
         <item name="cardBackgroundColor">@color/cardview_dark_background</item>
     </style>
 </resources>

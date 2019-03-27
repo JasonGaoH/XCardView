@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
  */
 interface CardViewImpl {
     void initialize(CardViewDelegate cardView, Context context, ColorStateList backgroundColor,
-                    float radius, float elevation, float maxElevation);
+                    float radius, float elevation, float maxElevation,ColorStateList shadowColor);
 
     void setRadius(CardViewDelegate cardView, float radius);
 

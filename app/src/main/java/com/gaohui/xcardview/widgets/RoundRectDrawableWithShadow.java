@@ -62,9 +62,9 @@ class RoundRectDrawableWithShadow extends Drawable {
 
     private boolean mDirty = true;
 
-    private final int mShadowStartColor;
+    private int mShadowStartColor;
 
-    private final int mShadowEndColor;
+    private int mShadowEndColor;
 
     private boolean mAddPaddingForCorners = true;
 
@@ -74,10 +74,10 @@ class RoundRectDrawableWithShadow extends Drawable {
     private boolean mPrintedShadowClipWarning = false;
 
     RoundRectDrawableWithShadow(Resources resources, ColorStateList backgroundColor, float radius,
-                                float shadowSize, float maxShadowSize) {
-        //改变shadow的颜色 mShadowStartColor mShadowEndColor
-        mShadowStartColor = Color.parseColor("#ebeef0");
-        mShadowEndColor = Color.parseColor("#F5F8FA");
+                                float shadowSize, float maxShadowSize, ColorStateList shadowColor) {
+
+        setShadowColor(shadowColor);
+
         mInsetShadow = resources.getDimensionPixelSize(R.dimen.cardview_compat_inset_shadow);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
         setBackground(backgroundColor);
@@ -88,6 +88,20 @@ class RoundRectDrawableWithShadow extends Drawable {
         mEdgeShadowPaint = new Paint(mCornerShadowPaint);
         mEdgeShadowPaint.setAntiAlias(false);
         setShadowSize(shadowSize, maxShadowSize);
+    }
+
+    private void setShadowColor(ColorStateList shadowColor) {
+        //改变shadow的颜色 mShadowStartColor mShadowEndColor
+        if(shadowColor == null) {
+            mShadowStartColor = Color.parseColor("#ebeef0");
+        } else {
+            mShadowStartColor = shadowColor.getColorForState(getState(),Color.parseColor("#ebeef0"));
+            if(mShadowEndColor == -1) {
+                mShadowStartColor = Color.parseColor("#ebeef0");
+            }
+        }
+
+        mShadowEndColor = Color.parseColor("#F5F8FA");
     }
 
     private void setBackground(ColorStateList color) {
