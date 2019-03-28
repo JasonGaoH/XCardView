@@ -66,9 +66,10 @@ class CardViewBaseImpl implements CardViewImpl {
 
     @Override
     public void initialize(CardViewDelegate cardView, Context context,
-                           ColorStateList backgroundColor, float radius, float elevation, float maxElevation) {
+                           ColorStateList backgroundColor, float radius, float elevation, float maxElevation,
+                           ColorStateList shadowColor) {
         RoundRectDrawableWithShadow background = createBackground(context, backgroundColor, radius,
-                elevation, maxElevation);
+                elevation, maxElevation,shadowColor);
         background.setAddPaddingForCorners(cardView.getPreventCornerOverlap());
         cardView.setCardBackground(background);
         updatePadding(cardView);
@@ -76,9 +77,9 @@ class CardViewBaseImpl implements CardViewImpl {
 
     private RoundRectDrawableWithShadow createBackground(Context context,
                                                          ColorStateList backgroundColor, float radius, float elevation,
-                                                         float maxElevation) {
+                                                         float maxElevation, ColorStateList shadowColor) {
         return new RoundRectDrawableWithShadow(context.getResources(), backgroundColor, radius,
-                elevation, maxElevation);
+                elevation, maxElevation,shadowColor);
     }
 
     @Override
