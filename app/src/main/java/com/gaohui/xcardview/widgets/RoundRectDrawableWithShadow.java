@@ -78,10 +78,6 @@ class RoundRectDrawableWithShadow extends Drawable {
                                 float shadowSize, float maxShadowSize, ColorStateList shadowColor) {
 
         setShadowColor(shadowColor);
-        //改变shadow的颜色 mShadowStartColor mShadowEndColor
-//        mShadowStartColor = Color.parseColor("#ebeef0");
-//        mShadowEndColor = Color.parseColor("#F5F8FA");
-
         mInsetShadow = resources.getDimensionPixelSize(R.dimen.cardview_compat_inset_shadow);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
         setBackground(backgroundColor);
@@ -105,7 +101,6 @@ class RoundRectDrawableWithShadow extends Drawable {
             }
         }
 
-        Log.d("gaohui","mShadowStartColor: " + mShadowStartColor);
         mShadowEndColor = Color.parseColor("#F5F8FA");
     }
 
