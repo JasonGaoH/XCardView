@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         initView();
 
-        disposable = ApiHelper.getGankApi().getBeauties(10,1).subscribeOn(Schedulers.io())
+        disposable = ApiHelper.getGankApi().getBeauties(50,1).subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<GankBeautyResult>() {
                     @Override
@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
                         //error
                     }
                 });
+
+
     }
 
     private void initView() {
