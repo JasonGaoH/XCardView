@@ -79,7 +79,7 @@ class CardViewBaseImpl implements CardViewImpl {
                                                          ColorStateList backgroundColor, float radius, float elevation,
                                                          float maxElevation, ColorStateList shadowColor) {
         return new RoundRectDrawableWithShadow(context.getResources(), backgroundColor, radius,
-                elevation, maxElevation,backgroundColor);
+                elevation, maxElevation,shadowColor);
     }
 
     @Override

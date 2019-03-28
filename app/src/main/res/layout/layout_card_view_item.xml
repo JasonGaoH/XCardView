@@ -4,7 +4,6 @@
     app:cardCornerRadius="4dp"
     app:cardElevation="2dp"
     app:cardPreventCornerOverlap="false"
-    app:cardShadowColor="#ff0000"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 

@@ -15,6 +15,7 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.gaohui.xcardview.R;
 
@@ -77,6 +78,9 @@ class RoundRectDrawableWithShadow extends Drawable {
                                 float shadowSize, float maxShadowSize, ColorStateList shadowColor) {
 
         setShadowColor(shadowColor);
+        //改变shadow的颜色 mShadowStartColor mShadowEndColor
+//        mShadowStartColor = Color.parseColor("#ebeef0");
+//        mShadowEndColor = Color.parseColor("#F5F8FA");
 
         mInsetShadow = resources.getDimensionPixelSize(R.dimen.cardview_compat_inset_shadow);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.DITHER_FLAG);
@@ -96,11 +100,12 @@ class RoundRectDrawableWithShadow extends Drawable {
             mShadowStartColor = Color.parseColor("#ebeef0");
         } else {
             mShadowStartColor = shadowColor.getColorForState(getState(),Color.parseColor("#ebeef0"));
-            if(mShadowEndColor == -1) {
+            if(mShadowStartColor == -1) {
                 mShadowStartColor = Color.parseColor("#ebeef0");
             }
         }
 
+        Log.d("gaohui","mShadowStartColor: " + mShadowStartColor);
         mShadowEndColor = Color.parseColor("#F5F8FA");
     }
 
